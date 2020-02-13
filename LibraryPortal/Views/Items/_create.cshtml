@@ -1,0 +1,87 @@
+﻿@model LibraryPortal.Item
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+@using (Html.BeginForm("Create", "Items", FormMethod.Post))
+{
+    <div class="container">
+        <!-- Trigger the modal with a button -->
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Create New</button>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        @*<h4 class="modal-title"</h4>*@
+                        <h4 class="modal-title w-100 font-weight-bold">Create New</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <label for=@Model.Item_Name>Item's Name:</label>
+                            <input id="itemName"
+                                   name="item_name"
+                                   value=""
+                                   class="form-control"
+                                   placeholder="Name of Item" />
+                        </div>
+                        <div class="form-group">
+                            <label for=@Model.Author>Author:</label>
+                            <input id="itemAuthor"
+                                   name="item_author"
+                                   value=""
+                                   class="form-control"
+                                   placeholder="Author of the book" />
+                        </div>
+                        <div class="form-group">
+                            <label for=@Model.Item_Type>Type of Item:</label>
+                            <input id="itemType"
+                                   name="item_type"
+                                   value=""
+                                   class="form-control"
+                                   placeholder="Genre of Book" />
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-default" id="btnSave" data-dismiss="modal">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <script>
+        $("#btnSave").click(function () {
+            var newItem = new Object();
+            newItem.Item_Name = $('#itemName').val();
+            newItem.Author = $('#itemAuthor').val();
+            newItem.Item_Type = $('#itemType').val();
+
+            if (newItem != null) {
+                $.ajax({
+                    type: "POST",
+                    url: "/Items/create",
+                    data: JSON.stringify(newItem),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json"
+                }).done(function (redirectUrl) {
+                    window.location.reload();   
+                });
+            }
+
+
+        });
+    </script>
+}
+
+
+

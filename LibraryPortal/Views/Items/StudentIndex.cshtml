@@ -1,0 +1,78 @@
+﻿@model IEnumerable<LibraryPortal.Item>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="container">
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+            <input type="text" id="Search" placeholder="Search" class="form-control" />
+        </div>
+    </div>
+</div>
+
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            Book Name
+        </th>
+        <th>
+            Author
+        </th>
+        <th>
+            Type
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr class="Search">
+    <td>
+        @Html.DisplayFor(modelItem => item.Item_Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Author)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Item_Type)
+    </td>
+    @*<td>
+            @Html.ActionLink("Details", "Details", new { id=item.ItemId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ItemId })
+        </td>
+    *@
+<td>
+    @Html.ActionLink("Borrow", "Borrow", new { id = item.ItemId }) 
+</td>
+
+</tr>
+    }
+
+</table>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        function Contains(first_text, second_text) {
+            if (first_text.indexOf(second_text) != -1) {
+                return true;
+            }
+        }
+        $("#Search").keyup(function () {
+            var boxText = $("#Search").val().toLowerCase();
+            $(".Search").each(function () {
+                if (!Contains($(this).text().toLowerCase(), boxText)) {
+                    $(this).hide();
+                } else {
+                    $(this).show();
+                }
+            });
+        });
+    });
+</script>

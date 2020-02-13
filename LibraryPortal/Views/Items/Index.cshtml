@@ -1,0 +1,27 @@
+﻿@model List<LibraryPortal.Item>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@Html.Partial("_create", new Item())
+
+<div id="container">
+    @Html.Partial("_Table")
+</div>
+
+<script>
+    function RefreshList()
+    {
+        $.ajax({
+            type: "GET",
+            URL: "Items/Table",
+            success: function (response) {
+                $("#container").html(response);
+            }
+        })
+
+    }
+
+</script>
