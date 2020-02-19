@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace LibPortalAPI
+namespace LibraryPortal.Services
 {
     public class FilterConfig
     {

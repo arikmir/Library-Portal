@@ -9,7 +9,7 @@ namespace LibraryPortal.HttpHelpers
 {
     public class HttpClientWrapper<T> where T : class
     {
-        private string BaseUrl = "http://localhost:44327//";
+        private string BaseUrl = "http://localhost/LibraryPortal.Services/";
         private HttpClient httpClient = new HttpClient();
 
         public List<T> items = new List<T>();

@@ -1,4 +1,5 @@
 ﻿using LibraryPortal.HttpHelpers;
+using LibraryPortal.Models;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -7,10 +8,6 @@ namespace LibraryPortal.Controllers
 {
     public class ItemsController : Controller
     {
-        private string BaseUrl = "http://localhost:44327//";
-
-        private Entities db = new Entities();
-
         public async Task<ActionResult> Index()
         {
             var clientWrapper = new HttpClientWrapper<Item>();
@@ -70,26 +67,10 @@ namespace LibraryPortal.Controllers
 
         //other methods
 
-        protected override void Dispose(bool disposing)
+        public ActionResult Details(int id)
         {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Item item = db.Items.Find(id);
-            if (item == null)
-            {
-                return HttpNotFound();
-            }
+            var clientWrapper = new HttpClientWrapper<Item>();
+            var item = clientWrapper.GetItem(id);
             return View(item);
         }
     }

@@ -1,11 +1,11 @@
-﻿@model List<LibraryPortal.Item>
+﻿@model List<LibraryPortal.Models.Item>
 
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
-@Html.Partial("_create", new Item())
+@Html.Partial("_create", new LibraryPortal.Models.Item())
 
 <div id="container">
     @Html.Partial("_Table")

@@ -1,4 +1,4 @@
-﻿@model List<LibraryPortal.Item>
+﻿@model List<LibraryPortal.Models.Item>
 
 
 
@@ -20,13 +20,13 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Item_Name)
+                @Html.DisplayFor(modelItem => item.ItemName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Author)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Item_Type)
+                @Html.DisplayFor(modelItem => item.ItemType)
             </td>
             <td>
                 @Html.ActionLink("Update", "Update", new { id = item.ItemId }) |

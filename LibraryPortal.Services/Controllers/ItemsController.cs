@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LibraryPortal.Services.DAL;
+using LibraryPortal.Services.DAL.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -11,6 +13,7 @@ namespace LibraryPortal.Services.Controllers
         private Entities entities = new Entities();
 
         //GET: /api/items
+        [Route("items")]
         public IEnumerable<Item> GetItems()
         {
             return entities.Items.ToList();
@@ -40,9 +43,9 @@ namespace LibraryPortal.Services.Controllers
             {
                 Item createdItem = new Item()
                 {
-                    Item_Name = item.Item_Name,
+                    ItemName = item.ItemName,
                     Author = item.Author,
-                    Item_Type = item.Item_Type
+                    ItemType = item.ItemType
                 };
                 entities.Items.Add(createdItem);
                 entities.SaveChanges();
@@ -63,9 +66,9 @@ namespace LibraryPortal.Services.Controllers
             {
                 var existingItem = entities.Items.SingleOrDefault(x => x.ItemId == id);
 
-                existingItem.Item_Name = item.Item_Name;
+                existingItem.ItemName = item.ItemName;
                 existingItem.Author = item.Author;
-                existingItem.Item_Type = item.Item_Type;
+                existingItem.ItemType = item.ItemType;
 
                 entities.SaveChanges();
                 return Ok();

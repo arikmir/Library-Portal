@@ -1,4 +1,4 @@
-﻿@model LibraryPortal.Item
+﻿@model LibraryPortal.Models.Item
 
 
 <meta charset="utf-8">
@@ -27,7 +27,7 @@
                     <div class="modal-body">
 
                         <div class="form-group">
-                            <label for=@Model.Item_Name>Item's Name:</label>
+                            <label for=@Model.ItemName>Item's Name:</label>
                             <input id="itemName"
                                    name="item_name"
                                    value=""
@@ -43,7 +43,7 @@
                                    placeholder="Author of the book" />
                         </div>
                         <div class="form-group">
-                            <label for=@Model.Item_Type>Type of Item:</label>
+                            <label for=@Model.ItemType>Type of Item:</label>
                             <input id="itemType"
                                    name="item_type"
                                    value=""
