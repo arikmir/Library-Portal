@@ -1,4 +1,4 @@
-﻿@model LibraryPortal.Item
+﻿@model LibraryPortal.Models.Item
 
 @{
     ViewBag.Title = "Edit";
@@ -17,10 +17,10 @@
         @Html.HiddenFor(model => Model.ItemId)
 
         <div class="form-group">
-            @Html.LabelFor(model => Model.Item_Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => Model.ItemName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => Model.Item_Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => Model.Item_Name, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => Model.ItemName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => Model.ItemName, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -33,10 +33,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => Model.Item_Type, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => Model.ItemType, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => Model.Item_Type, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => Model.Item_Type, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => Model.ItemType, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => Model.ItemType, "", new { @class = "text-danger" })
             </div>
         </div>
 
