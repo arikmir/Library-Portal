@@ -4,9 +4,14 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Library Items</h2>
+
 @Html.Partial("_create", new LibraryPortal.Models.Item())
 
+<div style="padding-top: 3px;">
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Create New</button>
+</div>
 <div id="container">
     @Html.Partial("_Table")
 </div>
