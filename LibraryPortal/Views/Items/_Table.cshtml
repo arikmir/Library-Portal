@@ -1,5 +1,7 @@
 ﻿@model List<LibraryPortal.Models.Item>
 
+
+
 <table class="table table-striped">
     <thead class="thead-light">
         <tr>
@@ -31,9 +33,14 @@
                 <td>
                     @Html.ActionLink("Update", "Update", new { id = item.ItemId }) |
                     @Html.ActionLink("Details", "Details", new { id = item.ItemId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ItemId })
+                    <button class="btn btn-default" data-authorid="@item.ItemId" data-toggle="modal" data-target="#deleteModal" onclick="libraryItems.deleteModalDialog(this);">
+                        Delete
+                    </button>
                 </td>
             </tr>
         }
+
+
     </tbody>
 </table>
+

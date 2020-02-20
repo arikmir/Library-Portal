@@ -55,13 +55,16 @@ namespace LibraryPortal.Controllers
             await clientWrapper.Update(id, item);
             return RedirectToAction("Index");
         }
-        
+
+        [HttpDelete]
+        [ActionName("Delete")]
         // DELETE: api/items/id
         public async Task<ActionResult> Delete(int id)
         {
             var clientDeleteWrapper = new HttpClientWrapper<Item>();
             var item = await clientDeleteWrapper.Delete(id);
-            return View(item);
+            //return View(item);
+            return Json(true);
         }
 
         //other methods
