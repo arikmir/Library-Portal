@@ -1,6 +1,17 @@
 ﻿@model List<LibraryPortal.Models.Item>
 
 
+@*<button class="btn btn-default" data-authorid="@item.ItemId" data-toggle="modal" data-target="#deleteModal" onclick="libraryItems.deleteModalDialog(this);">
+    Create New
+</button>*@
+
+
+<div style="padding-top: 3px;">
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="libraryItems.createModalDialog(this);">Create New</button>
+</div>
+
+
 
 <table class="table table-striped">
     <thead class="thead-light">
@@ -39,8 +50,6 @@
                 </td>
             </tr>
         }
-
-
     </tbody>
 </table>
 

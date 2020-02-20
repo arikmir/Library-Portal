@@ -8,10 +8,27 @@
 
 @Html.Partial("_create", new LibraryPortal.Models.Item())
 
-<div style="padding-top: 3px;">
+@*<div style="padding-top: 3px;">
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Create New</button>
 </div>
+    *@
+
+
+
+@* Create New Modal *@
+
+
+
+
+
+
+
+
+
+
+
+@* delete modal *@
 <div id="container"></div>
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -29,6 +46,11 @@
         </div>
     </div>
 </div>
+
+
+
+
+
 <script type="text/javascript">
     libraryItems.getItems();
     $("#btnDelete").bind("click", libraryItems.deleteItem);

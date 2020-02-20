@@ -52,7 +52,7 @@ namespace LibraryPortal.Services.Controllers
                 return Ok();
                 //return CreatedAtRoute("GetItem", new { id = createdItem.ItemId }, createdItem);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 //LOG
                 return InternalServerError();

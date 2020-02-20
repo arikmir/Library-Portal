@@ -31,14 +31,16 @@ namespace LibraryPortal.Controllers
         // POST: Items/Create
 
         [HttpPost]
+        [ActionName("create")]
         public async Task<ActionResult> Create(Item item)
         {
             var clientWrapper = new HttpClientWrapper<Item>();
             var items = await clientWrapper.Create(item);
-            string redirectUrl = "/items";
+            string redirectUrl = "/items/list";
             return Json(redirectUrl);
             //return RedirectToAction("Index");
             //return PartialView("_table", items);
+            //return Json(true);
         }
 
         public async Task<ActionResult> Update(int id)

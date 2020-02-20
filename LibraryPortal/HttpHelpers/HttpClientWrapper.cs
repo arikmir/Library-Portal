@@ -59,7 +59,7 @@ namespace LibraryPortal.HttpHelpers
 
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            HttpResponseMessage httpResponseMessage = await httpClient.PostAsJsonAsync("api/items", model);
+            HttpResponseMessage httpResponseMessage = await httpClient.PostAsJsonAsync("api/items/create", model);
             if (httpResponseMessage.IsSuccessStatusCode)
             {
                 var response = httpResponseMessage.Content.ReadAsStringAsync().Result;
