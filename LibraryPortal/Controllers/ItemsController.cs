@@ -8,21 +8,20 @@ namespace LibraryPortal.Controllers
 {
     public class ItemsController : Controller
     {
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            var clientWrapper = new HttpClientWrapper<Item>();
-            var items = await clientWrapper.GetItems();
-            return View(items);
-            //return PartialView("_table", items);
-
+            return View();
         }
+
         [HttpGet]
-        public async Task<PartialViewResult> Table()
+        [ActionName("list")]
+        public async Task<PartialViewResult> List()
         {
             var clientWrapper = new HttpClientWrapper<Item>();
             var items = await clientWrapper.GetItems();
             return PartialView("_table", items);
         }
+
         public async Task<ActionResult> StudentIndex()
         {
             var clientWrapper = new HttpClientWrapper<Item>();

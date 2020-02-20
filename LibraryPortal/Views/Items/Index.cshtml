@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Library Items</h2>
+<script type="text/javascript" src="~/Scripts/libraryItems.js"></script>
 
 @Html.Partial("_create", new LibraryPortal.Models.Item())
 
@@ -12,21 +12,8 @@
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Create New</button>
 </div>
-<div id="container">
-    @Html.Partial("_Table")
-</div>
+<div id="container"></div>
 
-<script>
-    function RefreshList()
-    {
-        $.ajax({
-            type: "GET",
-            URL: "Items/Table",
-            success: function (response) {
-                $("#container").html(response);
-            }
-        })
-
-    }
-
+<script type="text/javascript">
+    libraryItems.getItems();
 </script>
