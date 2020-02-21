@@ -1,4 +1,5 @@
 ﻿using LibraryPortal.HttpHelpers;
+using LibraryPortal.Models;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -7,25 +8,20 @@ namespace LibraryPortal.Controllers
 {
     public class ItemsController : Controller
     {
-        private string BaseUrl = "http://localhost:44327//";
-
-        private Entities db = new Entities();
-
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            var clientWrapper = new HttpClientWrapper<Item>();
-            var items = await clientWrapper.GetItems();
-            return View(items);
-            //return PartialView("_table", items);
-
+            return View();
         }
+
         [HttpGet]
-        public async Task<PartialViewResult> Table()
+        [ActionName("list")]
+        public async Task<PartialViewResult> List()
         {
             var clientWrapper = new HttpClientWrapper<Item>();
             var items = await clientWrapper.GetItems();
             return PartialView("_table", items);
         }
+
         public async Task<ActionResult> StudentIndex()
         {
             var clientWrapper = new HttpClientWrapper<Item>();
@@ -35,14 +31,16 @@ namespace LibraryPortal.Controllers
         // POST: Items/Create
 
         [HttpPost]
+        [ActionName("create")]
         public async Task<ActionResult> Create(Item item)
         {
             var clientWrapper = new HttpClientWrapper<Item>();
             var items = await clientWrapper.Create(item);
-            string redirectUrl = "/items";
+            string redirectUrl = "/items/list";
             return Json(redirectUrl);
             //return RedirectToAction("Index");
             //return PartialView("_table", items);
+            //return Json(true);
         }
 
         public async Task<ActionResult> Update(int id)
@@ -59,37 +57,24 @@ namespace LibraryPortal.Controllers
             await clientWrapper.Update(id, item);
             return RedirectToAction("Index");
         }
-        
+
+        [HttpDelete]
+        [ActionName("Delete")]
         // DELETE: api/items/id
         public async Task<ActionResult> Delete(int id)
         {
             var clientDeleteWrapper = new HttpClientWrapper<Item>();
             var item = await clientDeleteWrapper.Delete(id);
-            return View(item);
+            //return View(item);
+            return Json(true);
         }
 
         //other methods
 
-        protected override void Dispose(bool disposing)
+        public ActionResult Details(int id)
         {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Item item = db.Items.Find(id);
-            if (item == null)
-            {
-                return HttpNotFound();
-            }
+            var clientWrapper = new HttpClientWrapper<Item>();
+            var item = clientWrapper.GetItem(id);
             return View(item);
         }
     }

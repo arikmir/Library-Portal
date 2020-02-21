@@ -1,4 +1,4 @@
-﻿@model Item
+﻿@model LibraryPortal.Models.Item
 
 @{
     ViewBag.Title = "Delete";
@@ -12,11 +12,11 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Item_Name)
+            @Html.DisplayNameFor(model => model.ItemName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Item_Name)
+            @Html.DisplayFor(model => model.ItemName)
         </dd>
 
         <dt>
@@ -28,16 +28,17 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Item_Type)
+            @Html.DisplayNameFor(model => model.ItemType)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Item_Type)
+            @Html.DisplayFor(model => model.ItemType)
         </dd>
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">

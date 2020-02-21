@@ -1,38 +1,55 @@
-﻿@model List<LibraryPortal.Item>
+﻿@model List<LibraryPortal.Models.Item>
+
+
+@*<button class="btn btn-default" data-authorid="@item.ItemId" data-toggle="modal" data-target="#deleteModal" onclick="libraryItems.deleteModalDialog(this);">
+    Create New
+</button>*@
+
+
+<div style="padding-top: 3px;">
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="libraryItems.createModalDialog(this);">Create New</button>
+</div>
 
 
 
-<table class="table table-bordered">
-    <tr>
-        <th>
-            Book Name
-        </th>
-        <th>
-            Author
-        </th>
-        <th>
-            Type
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<table class="table table-striped">
+    <thead class="thead-light">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Item_Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Author)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Item_Type)
-            </td>
-            <td>
-                @Html.ActionLink("Update", "Update", new { id = item.ItemId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ItemId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ItemId })
-            </td>
+            <th>
+                Book Name
+            </th>
+            <th>
+                Author
+            </th>
+            <th>
+                Type
+            </th>
+            <th></th>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemType)
+                </td>
+                <td>
+                    @Html.ActionLink("Update", "Update", new { id = item.ItemId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ItemId }) |
+                    <button class="btn btn-default" data-authorid="@item.ItemId" data-toggle="modal" data-target="#deleteModal" onclick="libraryItems.deleteModalDialog(this);">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
+

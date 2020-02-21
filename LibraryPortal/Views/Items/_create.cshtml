@@ -1,4 +1,4 @@
-﻿@model LibraryPortal.Item
+﻿@model LibraryPortal.Models.Item
 
 
 <meta charset="utf-8">
@@ -8,15 +8,12 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-@using (Html.BeginForm("Create", "Items", FormMethod.Post))
+@using (Html.BeginForm("create", "Items", FormMethod.Post))
 {
-    <div class="container">
-        <!-- Trigger the modal with a button -->
-        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Create New</button>
+    <div class="container">  
         <!-- Modal -->
         <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog">
-
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header">
@@ -27,7 +24,7 @@
                     <div class="modal-body">
 
                         <div class="form-group">
-                            <label for=@Model.Item_Name>Item's Name:</label>
+                            <label for=@Model.ItemName>Item's Name:</label>
                             <input id="itemName"
                                    name="item_name"
                                    value=""
@@ -43,7 +40,7 @@
                                    placeholder="Author of the book" />
                         </div>
                         <div class="form-group">
-                            <label for=@Model.Item_Type>Type of Item:</label>
+                            <label for=@Model.ItemType>Type of Item:</label>
                             <input id="itemType"
                                    name="item_type"
                                    value=""
@@ -51,7 +48,7 @@
                                    placeholder="Genre of Book" />
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-default" id="btnSave" data-dismiss="modal">Save</button>
+                            <button type="button" class="btn btn-default" id="btnSave" data-dismiss="modal">Save</button>
                         </div>
                     </div>
                 </div>
@@ -59,7 +56,7 @@
         </div>
     </div>
    
-    <script>
+    @*<script>
         $("#btnSave").click(function () {
             var newItem = new Object();
             newItem.Item_Name = $('#itemName').val();
@@ -69,7 +66,7 @@
             if (newItem != null) {
                 $.ajax({
                     type: "POST",
-                    url: "/Items/create",
+                    url: rootUrl + "items/create",
                     data: JSON.stringify(newItem),
                     contentType: "application/json; charset=utf-8",
                     dataType: "json"
@@ -80,8 +77,13 @@
 
 
         });
-    </script>
+    </script>*@
 }
+    <script type="text/javascript">
+    libraryItems.getItems();
+        $("#btnSave").bind("click", libraryItems.createItem);
+    </script>
+
 
 
 
