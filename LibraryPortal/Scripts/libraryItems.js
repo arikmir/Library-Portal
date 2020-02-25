@@ -38,9 +38,9 @@
         console.log('create new item');
 
         var newItem = new Object();
-        newItem.Item_Name = $('#itemName').val();
+        newItem.ItemName = $('#itemName').val();
         newItem.Author = $('#itemAuthor').val();
-        newItem.Item_Type = $('#itemType').val();
+        newItem.ItemType = $('#itemType').val();
 
         if (newItem != null) {
             $.ajax({
@@ -49,7 +49,7 @@
                 data: JSON.stringify(newItem),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json"
-            }).done(function (redirectUrl) {
+            }).done(function () {
                getItems();
             });
         }

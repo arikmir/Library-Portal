@@ -36,11 +36,7 @@ namespace LibraryPortal.Controllers
         {
             var clientWrapper = new HttpClientWrapper<Item>();
             var items = await clientWrapper.Create(item);
-            string redirectUrl = "/items/list";
-            return Json(redirectUrl);
-            //return RedirectToAction("Index");
-            //return PartialView("_table", items);
-            //return Json(true);
+            return Json(true);
         }
 
         public async Task<ActionResult> Update(int id)

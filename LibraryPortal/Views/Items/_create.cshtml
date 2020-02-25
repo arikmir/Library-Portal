@@ -55,30 +55,8 @@
             </div>
         </div>
     </div>
-   
-    @*<script>
-        $("#btnSave").click(function () {
-            var newItem = new Object();
-            newItem.Item_Name = $('#itemName').val();
-            newItem.Author = $('#itemAuthor').val();
-            newItem.Item_Type = $('#itemType').val();
-
-            if (newItem != null) {
-                $.ajax({
-                    type: "POST",
-                    url: rootUrl + "items/create",
-                    data: JSON.stringify(newItem),
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json"
-                }).done(function (redirectUrl) {
-                    window.location.reload();   
-                });
-            }
-
-
-        });
-    </script>*@
 }
+
     <script type="text/javascript">
     libraryItems.getItems();
         $("#btnSave").bind("click", libraryItems.createItem);
